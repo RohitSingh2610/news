@@ -57,8 +57,8 @@ export class NewsContainer extends Component {
     this.updateNews();
   };
   fetchMoreData = async () => {
+    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-07-11&to=2023-07-11&sortBy=popularity&category=${this.props.category}&apiKey=${process.env.REACT_APP_API_KEY}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
     this.setState({ page: this.state.page + 1 });
-    const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&from=2023-07-11&to=2023-07-11&sortBy=popularity&category=${this.props.category}&apiKey=${process.env.REACT_APP_API_KEY}&page=${this.state.page}&pageSize=${this.props.pageSize}`;
 
     let data = await fetch(url);
     let parsedData = await data.json();
